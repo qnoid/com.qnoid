@@ -3,29 +3,29 @@
  *	(CC BY-SA 3.0) http://creativecommons.org/licenses/by-sa/3.0/
  *
  *	You are free:
- *		to Share Ñ to copy, distribute and transmit the work
- *		to Remix Ñ to adapt the work
+ *		to Share ï¿½ to copy, distribute and transmit the work
+ *		to Remix ï¿½ to adapt the work
  *
  *	Under the following conditions:
  *
- *	Attribution Ñ You must attribute the work in the manner specified by the 
+ *	Attribution ï¿½ You must attribute the work in the manner specified by the 
  *	author or licensor (but not in any way that suggests that they endorse you 
  *	or your use of the work).
  *	
- *	Share Alike Ñ If you alter, transform, or build upon this work, you may 
+ *	Share Alike ï¿½ If you alter, transform, or build upon this work, you may 
  *	distribute the resulting work only under the same or similar license to 
  *	this one.
  *
  *	With the understanding that:
  *
- *	Waiver Ñ Any of the above conditions can be waived if you get permission 
+ *	Waiver ï¿½ Any of the above conditions can be waived if you get permission 
  *	from the copyright holder.
  *
- *	Public Domain Ñ Where the work or any of its elements is in the public 
+ *	Public Domain ï¿½ Where the work or any of its elements is in the public 
  *	domain under applicable law, that status is in no way affected by the 
  *	license.
  *
- *	Other Rights Ñ In no way are any of the following rights affected by the 
+ *	Other Rights ï¿½ In no way are any of the following rights affected by the 
  *	license:
  *	Your fair dealing or fair use rights, or other applicable copyright 
  *	exceptions and limitations;
@@ -41,7 +41,7 @@ import com.forrst.java.t1Jc.Shotgun;
 import com.forrst.java.t1Jc.Terminator;
 
 /**
- * @author Markos Charatzas [http://forrst.com/people/Cue]
+ * @author Markos Charatzas [http://forrst.me/Cue]
  * @date Jan 14, 2011
  *
  * You don't really need another terminator for this...

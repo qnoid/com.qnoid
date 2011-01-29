@@ -37,6 +37,10 @@
  */
 package com.forrst.java.tRPu;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import junit.framework.Assert;
 
 import org.junit.Test;
@@ -56,6 +60,14 @@ import com.forrst.java.tRPu.Route.RouteBuilder;
  */
 public class RouteTest
 {
+    private static final DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");	
+	private static final Calendar now = Calendar.getInstance();	
+	private static final String BOOKING_CODE = 
+		String.format("%s%s%s", 
+				Destination.EDINBURGH.code(), 
+				Destination.LONDON.code(),
+				dateFormat.format(now.getTime()));
+	
     @Test
     public void via() throws Exception
     {
@@ -65,7 +77,7 @@ public class RouteTest
 
         Route route = new RouteBuilder(from, to).build();
 
-        Assert.assertEquals("EDILON26012011", route.bookingCode());
+        Assert.assertEquals(BOOKING_CODE, route.bookingCode());
         Assert.assertEquals(500, route.via(transportMethod));
     }
 }

@@ -37,12 +37,15 @@
  */
 package com.forrst.java.tRvO;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
+import com.forrst.java.tRPu.Destination;
 import com.forrst.java.tRvO.UrbanLegend;
 
 
@@ -54,6 +57,14 @@ import com.forrst.java.tRvO.UrbanLegend;
  */
 public class UrbanLegendTest
 {
+    private static final DateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");	
+	private static final Calendar now = Calendar.getInstance();	
+	private static final String STRING = 
+		String.format("%s%s%s", 
+				Destination.EDINBURGH.code(), 
+				Destination.LONDON.code(),
+				dateFormat.format(now.getTime()));
+
     @Test
     public void tell() throws Exception
     {
@@ -66,7 +77,7 @@ public class UrbanLegendTest
 
         UrbanLegend myth = new UrbanLegend(one, another, date, status);
         
-        Assert.assertEquals("EDILON26012011", myth.string);
+        Assert.assertEquals(STRING, myth.string);
         Assert.assertEquals(500, myth.tell(type, string));
     }
 }
