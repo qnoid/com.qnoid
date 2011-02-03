@@ -47,6 +47,8 @@ import com.forrst.java.tRZe.AspectSets;
 import com.google.common.collect.Sets;
 
 /**
+ * Survival of the fittest
+ * 
  * @author Markos Charatzas [http://forrst.me/Cue]
  * @date Feb 3, 2011
  */
@@ -55,23 +57,39 @@ public class AspectSetsTest
     @Test
     public void newSetOnDuplicates() throws Exception
     {
-        String[] animals = {"cat", "cat", "cat", "dog", "dog", "parrot", "lion", "zebra", "zebra"};
+        String[] animals = {"cat", "cat", "cat", 
+                            "dog", "dog", 
+                            "parrot", 
+                            "lion", 
+                            "zebra", "zebra"};
         
         Set<String> duplicatesOnly = AspectSets.newSetOnDuplicates(animals);
         
         Assert.assertEquals(3, duplicatesOnly.size());
-        Assert.assertEquals(Sets.newHashSet(new String[] {"cat", "dog", "zebra"}), duplicatesOnly);
+        Assert.assertEquals(
+                Sets.newHashSet(
+                        new String[] {"cat", "dog", "zebra"}), 
+                        duplicatesOnly);
         
         Assert.assertTrue(duplicatesOnly.add("lion"));        
         Assert.assertEquals(4, duplicatesOnly.size());
-        Assert.assertEquals(Sets.newHashSet(new String[] {"cat", "dog", "zebra", "lion"}), duplicatesOnly);
+        Assert.assertEquals(
+                Sets.newHashSet(
+                        new String[] {"cat", "dog", "zebra", "lion"}), 
+                        duplicatesOnly);
         
         Assert.assertFalse(duplicatesOnly.add("monkey"));        
         Assert.assertEquals(4, duplicatesOnly.size());
-        Assert.assertEquals(Sets.newHashSet(new String[] {"cat", "dog", "zebra", "lion"}), duplicatesOnly);
+        Assert.assertEquals(
+                Sets.newHashSet(
+                        new String[] {"cat", "dog", "zebra", "lion"}), 
+                        duplicatesOnly);
         
         Assert.assertTrue(duplicatesOnly.add("monkey"));
         Assert.assertEquals(5, duplicatesOnly.size());
-        Assert.assertEquals(Sets.newHashSet(new String[] {"cat", "dog", "zebra", "lion", "monkey"}), duplicatesOnly);
+        Assert.assertEquals(
+                Sets.newHashSet(
+                        new String[] {"cat", "dog", "zebra", "lion", "monkey"}), 
+                        duplicatesOnly);
     }
 }

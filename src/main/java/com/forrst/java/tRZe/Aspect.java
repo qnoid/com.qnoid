@@ -46,7 +46,7 @@ public interface Aspect<E>
 {
     /**
      * @param e the element to check
-     * @return true if its unique.
+     * @return true if it applies to the aspect
      */
     public boolean apply(E e);
 }

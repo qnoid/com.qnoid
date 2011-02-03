@@ -53,8 +53,8 @@ public class AspectSets
      * 
      * @param <E> the type of the {@link Set}
      * @param elements the elements to take create the set from
-     * @return a new Set which is only keen on holding added elements more than 
-     * once.
+     * @return a new Set which is only keen on holding added 
+     * elements more than once.
      */
     public static <E> Set<E> newSetOnDuplicates(final E[] elements)
     {
@@ -66,7 +66,8 @@ public class AspectSets
          */
         return new HashSet<E>( Lists.newArrayList(elements) )
         {
-            private static final long serialVersionUID = -8073479479226481874L;
+            private static final long serialVersionUID = 
+                -8073479479226481874L;
 
             /**
          * Add the element only if its a duplicate

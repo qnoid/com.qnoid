@@ -49,7 +49,8 @@ public class DuplicatesOnlySet<E> extends HashSet<E>
 {
     private final Set<E> uniques = new HashSet<E>();
 
-    public  DuplicatesOnlySet(Collection<? extends E> c) {
+    public  DuplicatesOnlySet(Collection<? extends E> c) 
+    {
         super(c);
     }
 
@@ -57,7 +58,8 @@ public class DuplicatesOnlySet<E> extends HashSet<E>
     public boolean add(E e) 
     {                
         /*
-         * This is getting called at the constructor thus get a NPE since
+         * This is getting called at the constructor 
+         * thus you will get a NPE since
          * {@link #uniques} isn't initialised yet.
          */
         if(!this.uniques.add(e))
