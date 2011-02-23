@@ -108,7 +108,7 @@ public class FilterTest
 					.gt(20)
 					.lt(30);
 
-		PersonConditionChain namedJohnBetween20And30 = 
+		Condition<Person> namedJohnBetween20And30 = 
 			new PersonConditionChain()
 					.hasName("John")
 					.age(between20and30);
