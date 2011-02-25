@@ -1,5 +1,5 @@
 /*
- *  This file is under the license Attribution-ShareAlike 3.0 Unported 
+ *  This file is under the licence Attribution-ShareAlike 3.0 Unported 
  *  (CC BY-SA 3.0) http://creativecommons.org/licenses/by-sa/3.0/
  *
  *  You are free:
@@ -35,49 +35,41 @@
  *  is used, such as publicity or privacy rights.
  *
  */
-package com.forrst.java.tgOg;
-
-import static com.forrst.java.tgOg.ModFizzBuzz.Buzz;
-import static com.forrst.java.tgOg.ModFizzBuzz.Fizz;
-import static com.forrst.java.tgOg.ModFizzBuzz.FizzBuzz;
-import junit.framework.Assert;
-
-import org.junit.Test;
-
-import com.forrst.java.tgOg.FizzBuzzOperator;
-
+package com.forrst.java.t11z;
 
 /**
  * @author Markos Charatzas [http://forrst.me/Cue]
- * @date Feb 23, 2011
+ * Destined to sink
  */
-public class FizzBuzzOperatorTest 
+public class Titanic
 {
-	private static String op(int number)
-	{
-	return FizzBuzz.applies(number)?FizzBuzz.toString()
-			:Fizz.applies(number)?Fizz.toString()
-			:Buzz.applies(number)?Buzz.toString()
-			:String.valueOf(number);
-	}
-
-	@Test
-	public void fizzBuzz() throws Exception 
-	{
-		final FizzBuzzOperator fizzBuzzOperator = 
-			FizzBuzzOperator.newFizzBuzz();
-
-		Each<Integer> between1and100 = Range.of(1, 100);
-
-		Closure<Integer> closure = new Closure<Integer>(){
-            public void apply(Integer number) 
-            {
-                Assert.assertEquals(
-                        op(number), 
-                        fizzBuzzOperator.op(number) );
+    private final WallStreet wallstreet = new WallStreet();
+    private final Pharaoh pharaoh = new Pharaoh();
+    private final Oilwell oilwell = new Oilwell();
+    private final Cowboy[] cowboys = new Cowboy[]{new Cowboy()};
+    
+    public void sail(String direction)
+    {
+        if("NORTH".equals(direction))
+        {
+            wallstreet.moneyNeverSleeps();
+        }
+        else if("SOUTH".equals(direction))
+        {
+            pharaoh.curse();
+        }
+        else if("EAST".equals(direction))
+        {
+            oilwell.drill();
+        }
+        else if("WEST".equals(direction))
+        {
+            for (Cowboy cowboy : this.cowboys) {
+                cowboy.shoot();
             }
-        };
-        
-        between1and100.each( closure );		
-	}
+        }
+        else{
+            throw new UnknownDestination();
+        }
+    }
 }

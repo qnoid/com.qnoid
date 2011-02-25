@@ -1,5 +1,5 @@
 /*
- *  This file is under the license Attribution-ShareAlike 3.0 Unported 
+ *  This file is under the licence Attribution-ShareAlike 3.0 Unported 
  *  (CC BY-SA 3.0) http://creativecommons.org/licenses/by-sa/3.0/
  *
  *  You are free:
@@ -35,49 +35,51 @@
  *  is used, such as publicity or privacy rights.
  *
  */
-package com.forrst.java.tgOg;
+package com.forrst.java.t0SA;
 
-import static com.forrst.java.tgOg.ModFizzBuzz.Buzz;
-import static com.forrst.java.tgOg.ModFizzBuzz.Fizz;
-import static com.forrst.java.tgOg.ModFizzBuzz.FizzBuzz;
-import junit.framework.Assert;
-
-import org.junit.Test;
-
-import com.forrst.java.tgOg.FizzBuzzOperator;
-
+import java.util.Date;
 
 /**
  * @author Markos Charatzas [http://forrst.me/Cue]
- * @date Feb 23, 2011
+ * @date Jan 15, 2011
+ * Defines a column in a table of a specified type under a given name.
  */
-public class FizzBuzzOperatorTest 
+public final class Column<T>
 {
-	private static String op(int number)
-	{
-	return FizzBuzz.applies(number)?FizzBuzz.toString()
-			:Fizz.applies(number)?Fizz.toString()
-			:Buzz.applies(number)?Buzz.toString()
-			:String.valueOf(number);
-	}
+    public static final Column<Integer> newIntegerType(String name){
+    return new Column<Integer>(Integer.class, name);
+    }
+    
+    public static final Column<Long> newLongType(String name){
+    return new Column<Long>(Long.class, name);
+    }
+    
+    public static final Column<Date> newDateType(String name){
+    return new Column<Date>(Date.class, name);
+    }
+    
+    public static final Column<String> newStringType(String name){
+    return new Column<String>(String.class, name);
+    }
+    
+    public static final <E> Column<E> newColumn(Class<E> clazz, String name){
+    return new Column<E>(clazz, name);
+    }
+    
+    private Class<T> clazz;
+    private String name;
+    
+    public Column(Class<T> clazz, String name)
+    {
+        this.clazz = clazz;
+        this.name = name;
+    }
 
-	@Test
-	public void fizzBuzz() throws Exception 
-	{
-		final FizzBuzzOperator fizzBuzzOperator = 
-			FizzBuzzOperator.newFizzBuzz();
+    public Class<T> type() {
+    return clazz;
+    }
 
-		Each<Integer> between1and100 = Range.of(1, 100);
-
-		Closure<Integer> closure = new Closure<Integer>(){
-            public void apply(Integer number) 
-            {
-                Assert.assertEquals(
-                        op(number), 
-                        fizzBuzzOperator.op(number) );
-            }
-        };
-        
-        between1and100.each( closure );		
-	}
+    public String name() {
+    return name;
+    }
 }

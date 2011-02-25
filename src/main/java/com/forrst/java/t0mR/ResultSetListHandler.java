@@ -1,5 +1,5 @@
 /*
- *  This file is under the license Attribution-ShareAlike 3.0 Unported 
+ *  This file is under the licence Attribution-ShareAlike 3.0 Unported 
  *  (CC BY-SA 3.0) http://creativecommons.org/licenses/by-sa/3.0/
  *
  *  You are free:
@@ -35,49 +35,51 @@
  *  is used, such as publicity or privacy rights.
  *
  */
-package com.forrst.java.tgOg;
+package com.forrst.java.t0mR;
 
-import static com.forrst.java.tgOg.ModFizzBuzz.Buzz;
-import static com.forrst.java.tgOg.ModFizzBuzz.Fizz;
-import static com.forrst.java.tgOg.ModFizzBuzz.FizzBuzz;
-import junit.framework.Assert;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.junit.Test;
-
-import com.forrst.java.tgOg.FizzBuzzOperator;
-
+import org.apache.commons.dbutils.ResultSetHandler;
 
 /**
  * @author Markos Charatzas [http://forrst.me/Cue]
- * @date Feb 23, 2011
+ * @date Jan 15, 2011
+ *
+ * Our implementation of a ResultSetHandler (part of DbUtils)
  */
-public class FizzBuzzOperatorTest 
+public class ResultSetListHandler<T> implements ResultSetHandler<List<T>>
 {
-	private static String op(int number)
-	{
-	return FizzBuzz.applies(number)?FizzBuzz.toString()
-			:Fizz.applies(number)?Fizz.toString()
-			:Buzz.applies(number)?Buzz.toString()
-			:String.valueOf(number);
-	}
-
-	@Test
-	public void fizzBuzz() throws Exception 
-	{
-		final FizzBuzzOperator fizzBuzzOperator = 
-			FizzBuzzOperator.newFizzBuzz();
-
-		Each<Integer> between1and100 = Range.of(1, 100);
-
-		Closure<Integer> closure = new Closure<Integer>(){
-            public void apply(Integer number) 
-            {
-                Assert.assertEquals(
-                        op(number), 
-                        fizzBuzzOperator.op(number) );
-            }
-        };
+    private ResultSetHandler<T> handler;
         
-        between1and100.each( closure );		
-	}
+    /**
+     * @param handler
+     */
+    public ResultSetListHandler(ResultSetHandler<T> handler)
+    {
+        this.handler = handler;
+    }
+
+    /**
+     * This method will iterate through the result set and return a list of 
+     * objects as defined in the {@link ResultSetHandler} used in the 
+     * constructor
+     * 
+     * @see ResultSet#next()
+     * @see ResultSetHandler#handle(ResultSet)
+     */
+    @Override            
+    public List<T> handle(ResultSet rs) throws SQLException
+    {
+        List<T> results = new ArrayList<T>();
+        
+        while(rs.next()){
+            results.add( this.handler.handle(rs) );
+        }
+        
+    return results;
+    }        
 }
+

@@ -1,5 +1,5 @@
 /*
- *  This file is under the license Attribution-ShareAlike 3.0 Unported 
+ *  This file is under the licence Attribution-ShareAlike 3.0 Unported 
  *  (CC BY-SA 3.0) http://creativecommons.org/licenses/by-sa/3.0/
  *
  *  You are free:
@@ -35,49 +35,51 @@
  *  is used, such as publicity or privacy rights.
  *
  */
-package com.forrst.java.tgOg;
+package com.forrst.java.t0El;
 
-import static com.forrst.java.tgOg.ModFizzBuzz.Buzz;
-import static com.forrst.java.tgOg.ModFizzBuzz.Fizz;
-import static com.forrst.java.tgOg.ModFizzBuzz.FizzBuzz;
+import java.util.Calendar;
+import java.util.Date;
+
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import com.forrst.java.tgOg.FizzBuzzOperator;
+import com.forrst.java.t0El.*;
+import com.forrst.java.t0Qu.Dates;
+import com.forrst.java.t0Qu.Elements;
+import com.forrst.java.t0Qu.Type;
 
 
 /**
  * @author Markos Charatzas [http://forrst.me/Cue]
- * @date Feb 23, 2011
+ * @date Dec 8, 2010
+ *
  */
-public class FizzBuzzOperatorTest 
+public class ElementTest
 {
-	private static String op(int number)
-	{
-	return FizzBuzz.applies(number)?FizzBuzz.toString()
-			:Fizz.applies(number)?Fizz.toString()
-			:Buzz.applies(number)?Buzz.toString()
-			:String.valueOf(number);
-	}
-
-	@Test
-	public void fizzBuzz() throws Exception 
-	{
-		final FizzBuzzOperator fizzBuzzOperator = 
-			FizzBuzzOperator.newFizzBuzz();
-
-		Each<Integer> between1and100 = Range.of(1, 100);
-
-		Closure<Integer> closure = new Closure<Integer>(){
-            public void apply(Integer number) 
-            {
-                Assert.assertEquals(
-                        op(number), 
-                        fizzBuzzOperator.op(number) );
-            }
-        };
-        
-        between1and100.each( closure );		
-	}
+    private static final Date DATE_VALUE = Dates.of(22, 1, 2010);
+    
+    @Test
+    public void formatId() throws Exception
+    {
+        Assert.assertEquals("\"id\":\"1\"", Elements.ID.format(1));
+    }
+    
+    @Test
+    public void formatName() throws Exception
+    {
+    	Assert.assertEquals("\"name\":\"Kyle\"", Elements.NAME.format("Kyle"));
+    }
+    
+    @Test
+    public void formatType() throws Exception
+    {
+    	Assert.assertEquals("\"type\":\"developer\"", Elements.TYPE.format(Type.DEVELOPER));
+    }
+    
+    @Test
+    public void formatDate() throws Exception
+    {
+        Assert.assertEquals("\"date\":\"Jan 22, '10\"", Elements.DATE.format(DATE_VALUE));
+    }
 }

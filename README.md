@@ -34,6 +34,6 @@ The project is [mavenized][3] and IDE independent thus you can easily make a jar
     
 any dependencies are also listed in the pom.xml
 
-[1]: http://forrst.com/people/Cue
+[1]: http://forrst.me/Cue
 [3]: http://maven.apache.org/
 [2]: http://creativecommons.org/licenses/by-sa/3.0/

@@ -1,5 +1,5 @@
 /*
- *  This file is under the license Attribution-ShareAlike 3.0 Unported 
+ *  This file is under the licence Attribution-ShareAlike 3.0 Unported 
  *  (CC BY-SA 3.0) http://creativecommons.org/licenses/by-sa/3.0/
  *
  *  You are free:
@@ -35,49 +35,23 @@
  *  is used, such as publicity or privacy rights.
  *
  */
-package com.forrst.java.tgOg;
+package com.forrst.java.t0Qu;
 
-import static com.forrst.java.tgOg.ModFizzBuzz.Buzz;
-import static com.forrst.java.tgOg.ModFizzBuzz.Fizz;
-import static com.forrst.java.tgOg.ModFizzBuzz.FizzBuzz;
-import junit.framework.Assert;
-
-import org.junit.Test;
-
-import com.forrst.java.tgOg.FizzBuzzOperator;
-
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * @author Markos Charatzas [http://forrst.me/Cue]
- * @date Feb 23, 2011
+ * @date Dec 8, 2010
+ *
  */
-public class FizzBuzzOperatorTest 
+public final class Dates
 {
-	private static String op(int number)
-	{
-	return FizzBuzz.applies(number)?FizzBuzz.toString()
-			:Fizz.applies(number)?Fizz.toString()
-			:Buzz.applies(number)?Buzz.toString()
-			:String.valueOf(number);
-	}
-
-	@Test
-	public void fizzBuzz() throws Exception 
-	{
-		final FizzBuzzOperator fizzBuzzOperator = 
-			FizzBuzzOperator.newFizzBuzz();
-
-		Each<Integer> between1and100 = Range.of(1, 100);
-
-		Closure<Integer> closure = new Closure<Integer>(){
-            public void apply(Integer number) 
-            {
-                Assert.assertEquals(
-                        op(number), 
-                        fizzBuzzOperator.op(number) );
-            }
-        };
+    public static Date of(int day, int month, int year)
+    {
+        Calendar now = Calendar.getInstance();        
+        now.set(year, month - 1, day);
         
-        between1and100.each( closure );		
-	}
+    return now.getTime();
+    }
 }

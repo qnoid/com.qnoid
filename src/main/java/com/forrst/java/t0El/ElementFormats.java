@@ -1,5 +1,5 @@
 /*
- *  This file is under the license Attribution-ShareAlike 3.0 Unported 
+ *  This file is under the licence Attribution-ShareAlike 3.0 Unported 
  *  (CC BY-SA 3.0) http://creativecommons.org/licenses/by-sa/3.0/
  *
  *  You are free:
@@ -35,49 +35,48 @@
  *  is used, such as publicity or privacy rights.
  *
  */
-package com.forrst.java.tgOg;
+package com.forrst.java.t0El;
 
-import static com.forrst.java.tgOg.ModFizzBuzz.Buzz;
-import static com.forrst.java.tgOg.ModFizzBuzz.Fizz;
-import static com.forrst.java.tgOg.ModFizzBuzz.FizzBuzz;
-import junit.framework.Assert;
+import java.text.DateFormat;
+import java.util.Date;
 
-import org.junit.Test;
-
-import com.forrst.java.tgOg.FizzBuzzOperator;
-
+import com.forrst.java.t0Qu.Element;
 
 /**
  * @author Markos Charatzas [http://forrst.me/Cue]
- * @date Feb 23, 2011
+ * A resource for various element formats
  */
-public class FizzBuzzOperatorTest 
+public final class ElementFormats
 {
-	private static String op(int number)
-	{
-	return FizzBuzz.applies(number)?FizzBuzz.toString()
-			:Fizz.applies(number)?Fizz.toString()
-			:Buzz.applies(number)?Buzz.toString()
-			:String.valueOf(number);
-	}
-
-	@Test
-	public void fizzBuzz() throws Exception 
-	{
-		final FizzBuzzOperator fizzBuzzOperator = 
-			FizzBuzzOperator.newFizzBuzz();
-
-		Each<Integer> between1and100 = Range.of(1, 100);
-
-		Closure<Integer> closure = new Closure<Integer>(){
-            public void apply(Integer number) 
-            {
-                Assert.assertEquals(
-                        op(number), 
-                        fizzBuzzOperator.op(number) );
+    /**
+     * A default JSON format as
+     * <code>
+     *  "name":"value"
+     * </code>
+     */
+    public static final <T> ElementFormat<T> defaultFormat()
+    {
+    return new ElementFormat<T>() {
+            @Override
+            public String format(Element<T> element, T value){
+            return String.format("\"%s\":\"%s\"", element.name(), value);
             }
         };
-        
-        between1and100.each( closure );		
-	}
+    }
+
+    /**
+     * Creates a new format for Date {@link Element}s. 
+     * The specified date format will be used to format the date of the element. 
+     * 
+     * @see DateFormat#format(Date)
+     */
+    public static final ElementFormat<Date> newDateFormat(final DateFormat dateFormat)
+    {
+    return new ElementFormat<Date>() {        
+            @Override
+            public String format(Element<Date> element, Date value) {
+            return String.format("\"%s\":\"%s\"", element.name(), dateFormat.format(value));
+            }
+        };    
+    }    
 }
