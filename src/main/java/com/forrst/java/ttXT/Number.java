@@ -35,49 +35,60 @@
  *  is used, such as publicity or privacy rights.
  *
  */
-package com.forrst.java.tgOg;
-
-import static com.forrst.java.tgOg.ModFizzBuzz.Buzz;
-import static com.forrst.java.tgOg.ModFizzBuzz.Fizz;
-import static com.forrst.java.tgOg.ModFizzBuzz.FizzBuzz;
-import junit.framework.Assert;
-
-import org.junit.Test;
-
-import com.forrst.java.tgOg.FizzBuzzOperator;
-
+package com.forrst.java.ttXT;
 
 /**
  * @author Markos Charatzas [http://forrst.me/Cue]
- * @date Feb 23, 2011
+ * @date Mar 1, 2011
+ * 
+ * Naive identification of a class
  */
-public class FizzBuzzOperatorTest 
+public class Number
 {
-	private static String op(int number)
-	{
-	return FizzBuzz.applies(number)?FizzBuzz.toString()
-			:Fizz.applies(number)?Fizz.toString()
-			:Buzz.applies(number)?Buzz.toString()
-			:String.valueOf(number);
-	}
+    private final double number;
+    
+    public Number(double value)
+    {
+        this.number = value;
+    }
 
-	@Test
-	public void fizzBuzz() throws Exception 
-	{
-		final FizzBuzzOperator fizzBuzzOperator = 
-			FizzBuzzOperator.newFizzBuzz();
-
-		Each<Integer> between1and100 = Range.of(1, 100);
-
-		between1and100.each( 
-		        new Closure<Integer>(){
-                    public void apply(Integer number) 
-                    {
-                        Assert.assertEquals(
-                                op(number), 
-                                fizzBuzzOperator.op(number) );
-                    }
-                }
-		);		
-	}
+    public double multiplyBy1(){
+    return multiplyBy(this.number, 1);
+    }
+    
+    public double multiplyBy10(){
+    return multiplyBy(this.number, 10);
+    }
+    
+    public double multiplyBy100(){
+    return multiplyBy(this.number, 100);
+    }
+    
+    public double multiplyBy1000(){
+    return multiplyBy(this.number, 1000);
+    }
+    
+    public double multiplyBy(double number, double multiplier){
+    return this.number * multiplier;
+    }
+    
+    public double add1(){
+    return add(this.number, 1);
+    }
+    
+    public double add10(){
+    return add(this.number, 10);
+    }
+    
+    public double add100(){
+    return add(this.number, 100);
+    }
+    
+    public double add1000(){
+    return add(this.number, 1000);
+    }
+    
+    public double add(double number, double value){
+    return this.number + value;
+    }    
 }

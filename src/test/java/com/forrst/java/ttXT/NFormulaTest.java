@@ -35,49 +35,26 @@
  *  is used, such as publicity or privacy rights.
  *
  */
-package com.forrst.java.tgOg;
+package com.forrst.java.ttXT;
 
-import static com.forrst.java.tgOg.ModFizzBuzz.Buzz;
-import static com.forrst.java.tgOg.ModFizzBuzz.Fizz;
-import static com.forrst.java.tgOg.ModFizzBuzz.FizzBuzz;
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import com.forrst.java.tgOg.FizzBuzzOperator;
-
+import com.forrst.java.ttXT.Formulas.NFormula;
 
 /**
  * @author Markos Charatzas [http://forrst.me/Cue]
- * @date Feb 23, 2011
+ * @date Mar 7, 2011
  */
-public class FizzBuzzOperatorTest 
+public class NFormulaTest
 {
-	private static String op(int number)
-	{
-	return FizzBuzz.applies(number)?FizzBuzz.toString()
-			:Fizz.applies(number)?Fizz.toString()
-			:Buzz.applies(number)?Buzz.toString()
-			:String.valueOf(number);
-	}
-
-	@Test
-	public void fizzBuzz() throws Exception 
-	{
-		final FizzBuzzOperator fizzBuzzOperator = 
-			FizzBuzzOperator.newFizzBuzz();
-
-		Each<Integer> between1and100 = Range.of(1, 100);
-
-		between1and100.each( 
-		        new Closure<Integer>(){
-                    public void apply(Integer number) 
-                    {
-                        Assert.assertEquals(
-                                op(number), 
-                                fizzBuzzOperator.op(number) );
-                    }
-                }
-		);		
-	}
+    @Test
+    public void op() throws Exception
+    {
+        int n = 9;
+        NFormula nFormula = new NFormula(n);
+        
+        Assert.assertEquals(45.0, nFormula.op());        
+    }
 }

@@ -1,5 +1,5 @@
 /*
- *  This file is under the licence Attribution-ShareAlike 3.0 Unported 
+ *  This file is under the license Attribution-ShareAlike 3.0 Unported 
  *  (CC BY-SA 3.0) http://creativecommons.org/licenses/by-sa/3.0/
  *
  *  You are free:
@@ -35,79 +35,53 @@
  *  is used, such as publicity or privacy rights.
  *
  */
-package com.forrst.java.t0RZ;
-
-import java.util.Date;
+package com.forrst.java.ttXT;
 
 /**
  * @author Markos Charatzas [http://forrst.me/Cue]
- * @date Dec 20, 2010
- *
+ * @date Mar 3, 2011
+ * 
+ * This isn't OO
  */
-public class Person
+public class Numbers
 {
-    public static class PersonBuilder
-    {
-        /**
-         * @param id
-         * @return
-         */
-        public PersonBuilder id(Integer id)
-        {
-            // TODO Auto-generated method stub
-            return null;
-        }
-
-        /**
-         * @param name
-         * @return
-         */
-        public PersonBuilder name(String name)
-        {
-            // TODO Auto-generated method stub
-            return null;
-        }
-
-        /**
-         * @param date
-         * @return
-         */
-        public PersonBuilder date(Date date)
-        {
-            // TODO Auto-generated method stub
-            return null;
-        }
-
-        /**
-         * @return
-         */
-        public Person build()
-        {
-            // TODO Auto-generated method stub
-            return null;
-        }
+    public static double multiplyBy1(double number){
+    return multiplyBy(number, 1);
     }
     
-    @Column(type=Integer.class, name="id")
-    private final Integer id;
-    
-    private final String name;
-    private final Date date;
-    
-    /**
-     * @param id
-     * @param name
-     * @param date
-     * @param type
-     */
-    private Person(Integer id, String name, Date date)
-    {
-        super();
-        this.id = id;
-        this.name = name;
-        this.date = date;
+    public static double multiplyBy10(double number){
+    return multiplyBy(number, 10);
     }
     
+    public static double multiplyBy100(double number){
+    return multiplyBy(number, 100);
+    }
     
+    public static double multiplyBy1000(double number){
+    return multiplyBy(number, 1000);
+    }
     
+    public static double multiplyBy(double number, double multiplier){
+    return number * multiplier;
+    }
+    
+    public static double add1(double number){
+    return add(number, 1);
+    }
+    
+    public static double add10(double number){
+    return add(number, 10);
+    }
+    
+    public static double add100(double number){
+    return add(number, 100);
+    }
+    
+    public static double add1000(double number){
+    return add(number, 1000);
+    }
+    
+    public static double add(double number, double value){
+    return number + value;
+    }    
 }

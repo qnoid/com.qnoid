@@ -113,16 +113,13 @@ public class FilterTest
 					.hasName("John")
 					.age(between20and30);
 		
-		Condition<Person> onPerson = 
-			Conditions.onPerson( namedJohnBetween20And30 );
-		
 		List<Person> actual = Filters
 			.of(johnAged20, 
 				johnAged21, 
 				johnAged29, 
 				johnAged30, 
 				markosAged30)
-			.list( onPerson );
+			.list( namedJohnBetween20And30 );
 		
 		Assert.assertEquals(2, actual.size());		
 		Assert.assertEquals(
