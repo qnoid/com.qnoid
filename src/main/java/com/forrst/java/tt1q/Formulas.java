@@ -35,17 +35,18 @@
  *  is used, such as publicity or privacy rights.
  *
  */
-package com.forrst.java.ttXT;
+package com.forrst.java.tt1q;
 
 /**
  * @author Markos Charatzas [http://forrst.me/Cue]
- * @date Mar 7, 2011
+ * @date Mar 1, 2011
  * 
- * An interface is forced to handle different kinds of formulas since 
- * we failed to identify an Operation class from {@link Numbers} 
- * that we can actually reuse.
+ * All available formulas for your perusal
  */
-public interface Formula
+public class Formulas
 {
-    public double op(double number);
+    public static final Formula AREA_OF_CIRCLE = Formula.newFormula(
+            MathOperations.MULTIPLY_BY_2,
+            MathOperations.MULTIPLY_BY_PI
+    );
 }

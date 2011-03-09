@@ -42,7 +42,7 @@ package com.forrst.java.ttXT;
  * @date Mar 7, 2011
  *
  * Is it really about different formula implementations? Unfortunately since 
- * there isn't a <b>operation class</b> to have a relationship with a 
+ * there isn't an <b>operation class</b> to have a relationship with a 
  * formula one the only way is to implement different classes for different 
  * formulas. Naively "reusing" {@link Numbers#multiplyBy(double, double)} 
  * affecting any class related to it while still losing on actual reusability of
@@ -52,55 +52,39 @@ public class Formulas
 {
     public static class AreaOfCircleFormula implements Formula
     {
-        private final double radius;
-        
-        public AreaOfCircleFormula(double radius)
+        public double op(double radius)
         {
-            this.radius = radius;
-        }
-
-        public double op()
-        {
-            double number = Numbers.multiplyBy(this.radius, 2);
+            double value = Numbers.multiplyBy(radius, 2);
             
-        return Numbers.multiplyBy(number, Math.PI);
+        return Numbers.multiplyBy(value, Math.PI);
         }
     }
     
     public static class AreaOfTriangleFormula implements Formula
     {
         private final double height;
-        private final double base;
 
-        public AreaOfTriangleFormula(double height, double base)
+        public AreaOfTriangleFormula(double height)
         {
             this.height = height;
-            this.base = base;
         }
 
-        public double op()
+        public double op(double base)
         {
-            double number = Numbers.multiplyBy(this.base, this.height);
+            double value = Numbers.multiplyBy(base, this.height);
             
-        return number / 2;
+        return value / 2;
         }
     }
     
     public static class NFormula implements Formula
     {
-        private final double n;
-        
-        public NFormula(double n)
+        public double op(double n)
         {
-            this.n = n;
-        }
-
-        public double op()
-        {
-            double number = Numbers.add(this.n, 1);
-            number = Numbers.multiplyBy(number, n);
+            double value = Numbers.add(n, 1);
+            value = Numbers.multiplyBy(value, n);
             
-        return number / 2;
+        return value / 2;
         }
     }
 }

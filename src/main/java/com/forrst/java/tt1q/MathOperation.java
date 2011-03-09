@@ -35,17 +35,15 @@
  *  is used, such as publicity or privacy rights.
  *
  */
-package com.forrst.java.ttXT;
+package com.forrst.java.tt1q;
 
 /**
  * @author Markos Charatzas [http://forrst.me/Cue]
- * @date Mar 7, 2011
+ * @date Mar 1, 2011
  * 
- * An interface is forced to handle different kinds of formulas since 
- * we failed to identify an Operation class from {@link Numbers} 
- * that we can actually reuse.
+ * An interface defining a single method you want to reuse
  */
-public interface Formula
+public interface MathOperation
 {
     public double op(double number);
 }

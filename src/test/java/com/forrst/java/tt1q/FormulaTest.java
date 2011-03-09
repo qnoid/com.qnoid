@@ -35,17 +35,58 @@
  *  is used, such as publicity or privacy rights.
  *
  */
-package com.forrst.java.ttXT;
+package com.forrst.java.tt1q;
+
+import junit.framework.Assert;
+
+import org.junit.Test;
+
 
 /**
- * @author Markos Charatzas [http://forrst.me/Cue]
- * @date Mar 7, 2011
+ * Code that is fun to use
  * 
- * An interface is forced to handle different kinds of formulas since 
- * we failed to identify an Operation class from {@link Numbers} 
- * that we can actually reuse.
+ * @author Markos Charatzas [http://forrst.me/Cue]
+ * @date Mar 1, 2011
  */
-public interface Formula
+public class FormulaTest
 {
-    public double op(double number);
+    @Test
+    public void areaOfCircle() throws Exception
+    {        
+        double r = 1;
+        
+        Assert.assertEquals(
+                2 * Math.PI, 
+                Formulas.AREA_OF_CIRCLE.apply(r));        
+    }
+
+    @Test
+    public void formula() throws Exception
+    {
+        int n = 9;
+        
+        Formula formula = 
+            Formula.newFormula(
+                MathOperations.addition(1),
+                MathOperations.multiplication(n),
+                MathOperations.division(2)
+                );
+        
+        Assert.assertEquals(45.0, formula.apply(n));        
+    }
+    
+    @Test
+    public void areaOfTriangle() throws Exception
+    {        
+        int base = 10;
+        int height = 10;
+        
+        Formula areaOfTriangle = 
+            Formula.newFormula(
+                MathOperations.multiplication(height),
+                MathOperations.division(2)
+                );
+        
+        Assert.assertEquals(50.0, areaOfTriangle.apply(base));        
+    }    
 }

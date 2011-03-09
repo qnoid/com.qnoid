@@ -35,17 +35,54 @@
  *  is used, such as publicity or privacy rights.
  *
  */
-package com.forrst.java.ttXT;
+package com.forrst.java.tt1q;
+
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 
 /**
- * @author Markos Charatzas [http://forrst.me/Cue]
- * @date Mar 7, 2011
+ * Describes a list of operations
  * 
- * An interface is forced to handle different kinds of formulas since 
- * we failed to identify an Operation class from {@link Numbers} 
- * that we can actually reuse.
+ * @see Formulas
+ * @author Markos Charatzas [http://forrst.me/Cue]
+ * @date Mar 1, 2011
  */
-public interface Formula
+public final class Formula
 {
-    public double op(double number);
+    /**
+     * Create a new formula which applies the operators in the order
+     * specified
+     * 
+     * @param operators the operators to apply in sequence
+     * @return a new formula for the spcified operators
+     * @see MathOperations
+     */
+    public static final Formula newFormula(MathOperation... operators){
+    return new Formula( Lists.newArrayList(operators) );    
+    }
+    
+    private final List<MathOperation> operations;
+
+    private Formula(List<MathOperation> operators)
+    {
+        this.operations = operators;
+    }
+
+    /**
+     * Applies all {@link MathOperation} specified in 
+     * {@link #newFormula(MathOperation...)} to the given number
+     *  
+     * @param number the number to appy the operations to
+     * @return the result after all operations have been applied
+     */
+    public double apply(double number)
+    {
+        for (MathOperation operation : this.operations){
+            number = operation.op(number);
+        }
+        
+    return number;
+    }
 }
