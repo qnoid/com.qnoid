@@ -1,5 +1,5 @@
 # Description
-This project holds the source code for any public post written in [qnoid.com]
+This project holds the source code for any public post written in [qnoid.com][1]
 
 Since 'code' posts need to be more focused the source code provides a broader
 context as well as allows anyone to navigate through it and even reuse it.
